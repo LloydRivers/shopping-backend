@@ -1,5 +1,5 @@
 import { ProductDTO } from '../../DTO/ProductDTO';
-import { ProductsRepository } from '../../adapators/repositories/concrete/ProductsRepository';
+import { ProductsRepository } from '../../adaptors/repositories/concrete/ProductsRepository';
 import { IProductsService } from '../abstract/ProductsService.ts';
 import { injectable, inject } from 'inversify';
 import { TYPES } from '../../config/types';
