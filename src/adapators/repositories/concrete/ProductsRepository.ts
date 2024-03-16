@@ -1,5 +1,5 @@
 import { ProductsDTO } from '../../../DTO/ProductDTO';
-import { IProductsRepository } from '../abstract/ProductsRepo';
+import { IProductsRepository } from '../abstract/ProductsRepository';
 
 export class ProductsRepository implements IProductsRepository {
   public async getAllProducts(): Promise<ProductsDTO> {

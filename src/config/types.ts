@@ -1,2 +1,4 @@
-const TYPES = {};
-export default TYPES;
+export const TYPES = {
+  ProductsController: Symbol.for('ProductsController'),
+  ProductsService: Symbol.for('ProductsService'),
+};

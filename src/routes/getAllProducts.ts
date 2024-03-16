@@ -1,7 +1,7 @@
 import { Context } from 'koa';
-import { ProductService } from '../services/ProductService';
+import { ProductsService } from '../services/concrete/ProductsService';
 
 export default async (ctx: Context) => {
-  const listService = new ProductService();
+  const listService = new ProductsService();
   ctx.body = await listService.getAllProducts();
 };
