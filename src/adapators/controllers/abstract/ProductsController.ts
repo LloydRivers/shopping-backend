@@ -1,5 +1,5 @@
-import { ProductsDTO } from '../../../DTO/ProductDTO';
+import { ProductDTO } from '../../../DTO/ProductDTO';
 
 export interface IProductsController {
-  getAllProducts(): Promise<ProductsDTO[]>;
+  getAllProducts(): Promise<ProductDTO[]>;
 }
