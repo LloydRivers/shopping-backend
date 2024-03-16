@@ -1,7 +1,7 @@
 import 'reflect-metadata';
 import { Container } from 'inversify';
 import { TYPES } from './types';
-import { ProductsController } from '../adapators/controllers/ProductsController';
+import { ProductsController } from '../adapators/controllers/concrete/ProductsController';
 import { ProductsService } from '../services/concrete/ProductsService';
 
 const container = new Container();
