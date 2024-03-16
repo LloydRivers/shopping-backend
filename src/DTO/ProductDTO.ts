@@ -10,5 +10,3 @@ export type ProductDTO = {
     count: number;
   };
 };
-
-export type ProductsDTO = ProductDTO[];
