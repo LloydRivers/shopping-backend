@@ -1,9 +1,16 @@
-import { ProductDTO } from '../../DTO/ProductDTO';
-import { ProductService } from '../../services/ProductService';
+import { ProductsDTO } from '../../DTO/ProductDTO';
+import { IProductsService } from '../../services/abstract/ProductsService.ts';
+import { injectable, inject } from 'inversify';
 
+@injectable()
 export class ProductsController {
-  public async getAllProducts(): Promise<ProductDTO[]> {
-    const listService = new ProductService();
-    return await listService.getAllProducts();
+  private productsService: IProductsService;
+
+  constructor(@inject('ProductsService') productsService: IProductsService) {
+    this.productsService = productsService;
+  }
+
+  public async getAllProducts(): Promise<ProductsDTO[]> {
+    return await this.productsService.getAllProducts();
   }
 }
