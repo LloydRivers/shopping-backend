@@ -1,0 +1,35 @@
+{
+  "compilerOptions": {
+    "target": "es2018",
+    "module": "commonjs",
+    "moduleResolution": "node",
+    "allowUnreachableCode": false,
+    "allowUnusedLabels": false,
+    "declaration": true,
+    // "types": ["reflect-metadata", "jest", "node"],
+    "types": ["reflect-metadata", "node"],
+    "forceConsistentCasingInFileNames": true,
+    "lib": ["es2018"],
+    "noEmitOnError": true,
+    "noFallthroughCasesInSwitch": true,
+    "noImplicitReturns": true,
+    "pretty": true,
+    "sourceMap": true,
+    "strict": true,
+
+    "rootDir": ".",
+    "outDir": "dist",
+    "experimentalDecorators": true,
+    "emitDecoratorMetadata": true,
+    "resolveJsonModule": true,
+    "esModuleInterop": true,
+    "skipLibCheck": true
+  },
+  "include": [
+    "src/*.ts",
+    "src/**/*.ts",
+    "test/integration/*.ts",
+    "spec/*.json"
+  ],
+  "exclude": ["node_modules"]
+}
