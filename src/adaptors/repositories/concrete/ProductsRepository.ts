@@ -3,7 +3,7 @@ import { IProductsRepository } from '../abstract/ProductsRepository';
 import { injectable } from 'inversify';
 import axios from 'axios';
 
-const url = 'https://fakestoreapi.com/products/1';
+const url = 'https://fakestoreapi.com/products';
 
 @injectable()
 export class ProductsRepository implements IProductsRepository {
