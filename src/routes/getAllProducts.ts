@@ -1,5 +1,5 @@
 import { Context } from 'koa';
-import { ProductsService } from '../services/concrete/ProductsService';
+import { ProductsService } from '../modules/products/services/concrete/ProductsService';
 import { container } from '../config/inversify.config';
 import { TYPES } from '../config/types';
 export default async (ctx: Context) => {

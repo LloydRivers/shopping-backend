@@ -2,7 +2,7 @@ import { ProductDTO } from '../../DTO/ProductDTO';
 import { ProductsRepository } from '../../adaptors/repositories/concrete/ProductsRepository';
 import { IProductsService } from '../abstract/ProductsService.ts';
 import { injectable, inject } from 'inversify';
-import { TYPES } from '../../config/types';
+import { TYPES } from '../../../../config/types';
 
 @injectable()
 export class ProductsService implements IProductsService {
