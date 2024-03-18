@@ -1,8 +1,9 @@
 import { Context } from 'koa';
 import { ProductsService } from '../modules/products/services/concrete/ProductsService';
+import { ProductsController } from '../modules/products/adaptors/controllers/concrete/ProductsController';
 import { container } from '../config/inversify.config';
 import { TYPES } from '../config/types';
 export default async (ctx: Context) => {
-  const productsService = container.get<ProductsService>(TYPES.ProductsService);
-  ctx.body = await productsService.getAllProducts();
+  const productsController = container.get<ProductsController>(TYPES.ProductsController);
+  ctx.body = await productsController.getAllProducts();
 };
