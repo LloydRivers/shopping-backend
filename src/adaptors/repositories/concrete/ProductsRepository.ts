@@ -1,23 +1,22 @@
 import { ProductDTO } from '../../../DTO/ProductDTO';
 import { IProductsRepository } from '../abstract/ProductsRepository';
 import { injectable } from 'inversify';
+import axios from 'axios';
+
+const url = 'https://fakestoreapi.com/products/1';
 
 @injectable()
 export class ProductsRepository implements IProductsRepository {
   public async getAllProducts(): Promise<ProductDTO[]> {
-    return [
-      {
-        id: 1,
-        title: 'title',
-        price: 100,
-        description: 'description',
-        category: 'category',
-        image: 'image',
-        rating: {
-          rate: 4,
-          count: 100,
-        },
-      },
-    ];
+    try {
+      const response = await axios.get(url);
+      return response.data;
+    } catch (error: unknown) {
+      let message;
+      if (error instanceof Error) {
+        message = error.message;
+      } else message = String(error);
+      throw new Error(`Error fetching products: ${message}`);
+    }
   }
 }
