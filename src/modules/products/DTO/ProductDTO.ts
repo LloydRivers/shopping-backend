@@ -1,4 +1,4 @@
-export type ProductDTO = {
+export interface IProductDTO {
   id: number;
   title: string;
   price: number;
@@ -9,4 +9,4 @@ export type ProductDTO = {
     rate: number;
     count: number;
   };
-};
+}
