@@ -16,5 +16,3 @@ export class ProductsController implements IProductsController {
     return await this.productsService.getAllProducts();
   }
 }
-//                    here
-// --> conteoller -> service -> repository -> entity
