@@ -1,7 +1,6 @@
 import { IProductDTO } from '../../../DTO/ProductDTO';
-import { IProductsRepository } from '../IProductsRepository';
+import { IProductsRepository } from './IProductsRepository';
 import { injectable } from 'inversify';
-import { ProductsMap } from '../../../mappers/productsMap';
 import axios from 'axios';
 
 const url = 'https://fakestoreapi.com/products';

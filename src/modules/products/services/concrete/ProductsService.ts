@@ -1,9 +1,8 @@
-import { ProductDTO } from '../../DTO/ProductDTO';
+import { IProductDTO } from '../../DTO/ProductDTO';
 import { ProductsRepository } from '../../adaptors/repositories/Product/ProductsRepository';
 import { IProductsService } from '../abstract/ProductsService.ts';
 import { injectable, inject } from 'inversify';
 import { TYPES } from '../../../../config/types';
-import { ProductsMap } from '../../mappers/productsMap';
 
 @injectable()
 export class ProductsService implements IProductsService {
@@ -13,8 +12,7 @@ export class ProductsService implements IProductsService {
     this.productsRepository = productsRepository;
   }
 
-  public async getAllProducts(): Promise<ProductDTO[]> {
-    const products = await this.productsRepository.getAllProducts();
-    return products.map((product) => ProductsMap.toDTO(product));
+  public async getAllProducts(): Promise<IProductDTO[]> {
+    return await this.productsRepository.getAllProducts();
   }
 }
