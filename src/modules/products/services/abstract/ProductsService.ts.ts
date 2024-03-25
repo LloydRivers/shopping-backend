@@ -1,5 +1,5 @@
-import { ProductDTO } from '../../DTO/ProductDTO';
+import { IProductDTO } from '../../DTO/ProductDTO';
 
 export interface IProductsService {
-  getAllProducts(): Promise<ProductDTO[]>;
+  getAllProducts(): Promise<IProductDTO[]>;
 }
