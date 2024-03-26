@@ -61,4 +61,45 @@ describe('ProductsRepository', () => {
       await expect(instance.getProductByID(productId)).rejects.toThrowError(error);
     });
   });
+
+  describe('postProduct', () => {
+    test('should call postProduct and return the correct data', async () => {
+      const product = {
+        id: 1,
+        name: 'Product 1',
+        title: 'Product Title',
+        price: 10,
+        description: 'Description',
+        category: 'Category',
+        image: 'Image URL',
+        rating: { rate: 5, count: 10 },
+      };
+      // Mock Axios to resolve with product
+      vi.mocked(axios.post).mockResolvedValueOnce({ data: product });
+
+      // Call postProduct and verify the response and Axios call
+      const newProduct = await instance.postProduct(product);
+      expect(newProduct).toEqual(product);
+      expect(axios.post).toHaveBeenCalledWith('https://fakestoreapi.com/products', product);
+    });
+
+    test('should throw an error when postProduct fails', async () => {
+      const error = new Error('Failed to post product');
+      const product = {
+        id: 1,
+        name: 'Product 1',
+        title: 'Product Title',
+        price: 10,
+        description: 'Description',
+        category: 'Category',
+        image: 'Image URL',
+        rating: { rate: 5, count: 10 },
+      };
+      // Mock Axios to reject with an error
+      vi.mocked(axios.post).mockRejectedValue(error);
+
+      // Call postProduct and expect it to throw an error
+      await expect(instance.postProduct(product)).rejects.toThrowError(error);
+    });
+  });
 });
