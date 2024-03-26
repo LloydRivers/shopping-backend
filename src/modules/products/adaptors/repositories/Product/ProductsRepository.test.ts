@@ -10,13 +10,7 @@ describe('ProductsRepository', () => {
     instance = new ProductsRepository();
   });
 
-  beforeEach(() => {
-    // Mock axios
-    vi.mock('axios');
-
-    // Set up Axios mock to be used in all test cases
-    vi.mocked(axios.get);
-  });
+  vi.mock('axios');
 
   afterEach(() => {
     // Clear all mocks after each test to ensure isolation
