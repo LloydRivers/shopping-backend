@@ -1,7 +1,7 @@
 {
   "compilerOptions": {
     "target": "es2020",
-    "module": "ESNext",
+    "module": "CommonJS",
     "moduleResolution": "node",
     "allowUnreachableCode": false,
     "allowUnusedLabels": false,
@@ -21,7 +21,11 @@
     "emitDecoratorMetadata": true,
     "resolveJsonModule": true,
     "esModuleInterop": true,
-    "skipLibCheck": true
+    "skipLibCheck": true,
+    "baseUrl": ".",
+    "paths": {
+      "@/*": ["src/*"]
+    }
   },
   "include": ["src/*.ts", "src/**/*.ts", "tests/**/*", "spec/*.json"],
   "exclude": ["node_modules"]
