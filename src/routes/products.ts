@@ -24,3 +24,10 @@ export async function postProduct(ctx: Context) {
   const requestBody: IProductDTO = ctx.request.body as IProductDTO;
   ctx.body = await productsController.postProduct(requestBody);
 }
+
+export async function modifyProduct(ctx: Context) {
+  const productId = ctx.params.id;
+  const productsController = productContainer();
+  const requestBody: IProductDTO = ctx.request.body as IProductDTO;
+  ctx.body = await productsController.modifyProduct(productId, requestBody);
+}

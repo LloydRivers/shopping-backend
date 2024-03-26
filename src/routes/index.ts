@@ -1,3 +1,3 @@
-import { getAllProducts, getProductById, postProduct } from './products';
+import { getAllProducts, getProductById, postProduct, modifyProduct } from './products';
 
-export { getAllProducts, getProductById, postProduct };
+export { getAllProducts, getProductById, postProduct, modifyProduct };
