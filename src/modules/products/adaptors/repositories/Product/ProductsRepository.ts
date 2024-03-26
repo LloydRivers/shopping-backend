@@ -3,13 +3,28 @@ import { IProductsRepository } from './IProductsRepository';
 import { injectable } from 'inversify';
 import axios from 'axios';
 
-const url = 'https://fakestoreapi.com/products';
+const baseUrl = 'https://fakestoreapi.com/products';
 
 @injectable()
 export class ProductsRepository implements IProductsRepository {
   public async getAllProducts(): Promise<IProductDTO[]> {
     try {
-      const response = await axios.get(url);
+      const response = await axios.get(baseUrl);
+      return response.data;
+    } catch (error: unknown) {
+      let message;
+      if (error instanceof Error) {
+        message = error.message;
+      } else message = String(error);
+      throw new Error(`${message}`);
+    }
+  }
+
+  public async getProductByID(productId: number): Promise<IProductDTO> {
+    const endPoint = `${baseUrl}/${productId}`;
+
+    try {
+      const response = await axios.get(endPoint);
       return response.data;
     } catch (error: unknown) {
       let message;

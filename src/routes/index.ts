@@ -1,3 +1,4 @@
-import getAllProductsRoute from './getAllProducts';
+import { getAllProducts } from './products';
+import { getProductById } from './products';
 
-export { getAllProductsRoute };
+export { getAllProducts, getProductById };

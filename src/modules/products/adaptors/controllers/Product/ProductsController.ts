@@ -15,4 +15,7 @@ export class ProductsController implements IProductsController {
   public async getAllProducts(): Promise<IProductDTO[]> {
     return await this.productsService.getAllProducts();
   }
+  public async getProductByID(productId: number): Promise<IProductDTO> {
+    return await this.productsService.getProductByID(productId);
+  }
 }

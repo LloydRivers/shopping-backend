@@ -15,4 +15,7 @@ export class ProductsService implements IProductsService {
   public async getAllProducts(): Promise<IProductDTO[]> {
     return await this.productsRepository.getAllProducts();
   }
+  public async getProductByID(productId: number): Promise<IProductDTO> {
+    return await this.productsRepository.getProductByID(productId);
+  }
 }
