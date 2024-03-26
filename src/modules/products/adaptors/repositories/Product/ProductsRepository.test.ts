@@ -145,4 +145,37 @@ describe('ProductsRepository', () => {
       await expect(instance.modifyProduct(productId, product)).rejects.toThrowError(error);
     });
   });
+
+  describe('deleteProduct', () => {
+    test('should call deleteProduct and return the correct data', async () => {
+      const product = {
+        id: 1,
+        name: 'Product 1',
+        title: 'Product Title',
+        price: 10,
+        description: 'Description',
+        category: 'Category',
+        image: 'Image URL',
+        rating: { rate: 5, count: 10 },
+      };
+      const productId = 1;
+      // Mock Axios to resolve with product
+      vi.mocked(axios.delete).mockResolvedValueOnce({ data: product });
+
+      // Call deleteProduct and verify the response and Axios call
+      const deletedProduct = await instance.deleteProduct(productId);
+      expect(deletedProduct).toEqual(product);
+      expect(axios.delete).toHaveBeenCalledWith(`https://fakestoreapi.com/products/${productId}`);
+    });
+
+    test('should throw an error when deleteProduct fails', async () => {
+      const error = new Error('Failed to delete product');
+      const productId = 1;
+      // Mock Axios to reject with an error
+      vi.mocked(axios.delete).mockRejectedValue(error);
+
+      // Call deleteProduct and expect it to throw an error
+      await expect(instance.deleteProduct(productId)).rejects.toThrowError(error);
+    });
+  });
 });

@@ -58,4 +58,16 @@ export class ProductsRepository implements IProductsRepository {
       throw new Error(`${message}`);
     }
   }
+
+  public async deleteProduct(productId: number): Promise<IProductDTO> {
+    const endPoint = `${baseUrl}/${productId}`;
+
+    try {
+      const response = await axios.delete(endPoint);
+      return response.data;
+    } catch (error: unknown) {
+      const message = getErrorMessage(error);
+      throw new Error(`${message}`);
+    }
+  }
 }

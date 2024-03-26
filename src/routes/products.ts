@@ -31,3 +31,9 @@ export async function modifyProduct(ctx: Context) {
   const requestBody: IProductDTO = ctx.request.body as IProductDTO;
   ctx.body = await productsController.modifyProduct(productId, requestBody);
 }
+
+export async function deleteProduct(ctx: Context) {
+  const productId = ctx.params.id;
+  const productsController = productContainer();
+  ctx.body = await productsController.deleteProduct(productId);
+}

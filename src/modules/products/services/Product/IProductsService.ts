@@ -5,4 +5,5 @@ export interface IProductsService {
   getProductByID(productId: number): Promise<IProductDTO>;
   postProduct(product: IProductDTO): Promise<IProductDTO>;
   modifyProduct(productId: number, product: IProductDTO): Promise<IProductDTO>;
+  deleteProduct(productId: number): Promise<IProductDTO>;
 }

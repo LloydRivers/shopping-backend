@@ -26,4 +26,8 @@ export class ProductsController implements IProductsController {
   public async modifyProduct(productId: number, product: IProductDTO): Promise<IProductDTO> {
     return await this.productsService.modifyProduct(productId, product);
   }
+
+  public async deleteProduct(productId: number): Promise<IProductDTO> {
+    return await this.productsService.deleteProduct(productId);
+  }
 }
