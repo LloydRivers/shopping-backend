@@ -2,7 +2,7 @@ import 'reflect-metadata';
 import { Container } from 'inversify';
 import { TYPES } from './types';
 import { ProductsController } from '../modules/products/adaptors/controllers/Product/ProductsController';
-import { ProductsService } from '../modules/products/services/concrete/ProductsService';
+import { ProductsService } from '../modules/products/services/Product/ProductsService';
 import { ProductsRepository } from '../modules/products/adaptors/repositories/Product/ProductsRepository';
 
 const container = new Container();
