@@ -18,4 +18,8 @@ export class ProductsController implements IProductsController {
   public async getProductByID(productId: number): Promise<IProductDTO> {
     return await this.productsService.getProductByID(productId);
   }
+
+  public async postProduct(product: IProductDTO): Promise<IProductDTO> {
+    return await this.productsService.postProduct(product);
+  }
 }

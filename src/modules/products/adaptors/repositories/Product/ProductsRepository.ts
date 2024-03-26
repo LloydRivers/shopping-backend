@@ -34,4 +34,17 @@ export class ProductsRepository implements IProductsRepository {
       throw new Error(`${message}`);
     }
   }
+
+  public async postProduct(product: IProductDTO): Promise<IProductDTO> {
+    try {
+      const response = await axios.post(baseUrl, product);
+      return response.data;
+    } catch (error: unknown) {
+      let message;
+      if (error instanceof Error) {
+        message = error.message;
+      } else message = String(error);
+      throw new Error(`${message}`);
+    }
+  }
 }
