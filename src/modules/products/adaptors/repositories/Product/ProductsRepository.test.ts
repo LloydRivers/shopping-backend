@@ -1,28 +1,45 @@
 import axios from 'axios';
 import 'reflect-metadata';
 import { ProductsRepository } from './ProductsRepository';
-/*
-Test by mocking or create a fake server (supertest)
-Mock the direct dependency of the class
-*/
-// const mockAxiosGet = vi.spy(axios, 'get');
-
-vi.mock('axios');
 
 describe('ProductsRepository', () => {
-  describe('getAllProducts', () => {
-    //we should clear allmocks before/after a test if we do this
-    let instance: ProductsRepository;
+  let instance: ProductsRepository;
+
+  beforeEach(() => {
+    // Initialize a new instance of ProductsRepository before each test
+    instance = new ProductsRepository();
+  });
+
+  beforeEach(() => {
+    // Mock axios
+    vi.mock('axios');
+
+    // Set up Axios mock to be used in all test cases
+    vi.mocked(axios.get);
+  });
+
+  afterEach(() => {
+    // Clear all mocks after each test to ensure isolation
+    vi.clearAllMocks();
+  });
+
+  test('should call getAllProducts and return the correct data', async () => {
     const data = [{ id: 1, name: 'Product 1' }];
-    beforeEach(() => {
-      instance = new ProductsRepository();
-    });
-    test('should call axios.get and return the correct data', async () => {
-      vi.mocked(axios.get).mockResolvedValueOnce({
-        data,
-      });
-      const products = await instance.getAllProducts();
-      expect(products).toEqual(data);
-    });
+    // Mock Axios to resolve with data
+    vi.mocked(axios.get).mockResolvedValueOnce({ data });
+
+    // Call getAllProducts and verify the response and Axios call
+    const products = await instance.getAllProducts();
+    expect(products).toEqual(data);
+    expect(axios.get).toHaveBeenCalledWith('https://fakestoreapi.com/products');
+  });
+
+  test('should throw an error when getAllProducts fails', async () => {
+    const error = new Error('Failed to fetch products');
+    // Mock Axios to reject with an error
+    vi.mocked(axios.get).mockRejectedValue(error);
+
+    // Call getAllProducts and expect it to throw an error
+    await expect(instance.getAllProducts()).rejects.toThrowError(error);
   });
 });

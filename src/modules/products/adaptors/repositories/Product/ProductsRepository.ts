@@ -16,7 +16,7 @@ export class ProductsRepository implements IProductsRepository {
       if (error instanceof Error) {
         message = error.message;
       } else message = String(error);
-      throw new Error(`Error fetching products: ${message}`);
+      throw new Error(`${message}`);
     }
   }
 }
