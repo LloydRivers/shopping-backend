@@ -20,9 +20,3 @@ export class ProductsRepository implements IProductsRepository {
     }
   }
 }
-
-/*
-id: prisma.data.id,
-*/
-
-// go to datavase -> get a payload -> right away map to a dto -> return dto

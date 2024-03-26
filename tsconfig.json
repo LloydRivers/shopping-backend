@@ -1,12 +1,12 @@
 {
   "compilerOptions": {
     "target": "es2020",
-    "module": "commonjs",
+    "module": "ESNext",
     "moduleResolution": "node",
     "allowUnreachableCode": false,
     "allowUnusedLabels": false,
     "declaration": true,
-    "types": ["reflect-metadata", "node"],
+    "types": ["reflect-metadata", "node", "vitest/globals"],
     "forceConsistentCasingInFileNames": true,
     "lib": ["es2018"],
     "noEmitOnError": true,
@@ -15,7 +15,6 @@
     "pretty": true,
     "sourceMap": true,
     "strict": true,
-
     "rootDir": ".",
     "outDir": "dist",
     "experimentalDecorators": true,
@@ -24,6 +23,6 @@
     "esModuleInterop": true,
     "skipLibCheck": true
   },
-  "include": ["src/*.ts", "src/**/*.ts", "test/integration/*.ts", "spec/*.json"],
+  "include": ["src/*.ts", "src/**/*.ts", "tests/**/*", "spec/*.json"],
   "exclude": ["node_modules"]
 }
