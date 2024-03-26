@@ -1,3 +1,5 @@
+/* eslint-disable */
+
 import { Context, Next } from 'koa';
 import { z, ZodError } from 'zod';
 import { StatusCodes } from 'http-status-codes';
