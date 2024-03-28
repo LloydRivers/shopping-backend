@@ -145,6 +145,82 @@
           }
         }
       }
+    },
+    "/product/{productId}": {
+      "get": {
+        "deprecated": false,
+        "description": "Will return a product by id.",
+        "parameters": [
+          {
+            "name": "productId",
+            "in": "path",
+            "required": true,
+            "description": "The product id",
+            "schema": {
+              "type": "integer"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful response.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "id": {
+                      "type": "integer",
+                      "description": "The product id"
+                    },
+                    "title": {
+                      "type": "string",
+                      "description": "The title of the product"
+                    },
+                    "price": {
+                      "type": "number",
+                      "description": "The price of the product"
+                    },
+                    "description": {
+                      "type": "string",
+                      "description": "The description of the product"
+                    },
+                    "category": {
+                      "type": "string",
+                      "description": "The category of the product"
+                    },
+                    "image": {
+                      "type": "string",
+                      "description": "The image URL of the product"
+                    },
+                    "rating": {
+                      "type": "object",
+                      "properties": {
+                        "rate": {
+                          "type": "number",
+                          "description": "The rating of the product"
+                        },
+                        "count": {
+                          "type": "integer",
+                          "description": "The count of ratings for the product"
+                        }
+                      },
+                      "required": ["rate", "count"]
+                    }
+                  },
+                  "required": ["id", "title", "price", "description", "category", "image", "rating"]
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Product not found."
+          },
+          "500": {
+            "description": "Internal server error."
+          }
+        }
+      }
     }
   },
   "components": {
