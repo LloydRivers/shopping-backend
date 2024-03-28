@@ -8,9 +8,9 @@ const router = new KoaRouter();
 
 router.get('/documentation', swaggerDocs);
 router.get('/products', getAllProducts);
-router.get('/products/:id', getProductById);
-router.post('/products', validatePostRequest(productSchema), postProduct);
-router.put('/products/:id', validatePostRequest(productSchema), modifyProduct);
-router.delete('/products/:id', deleteProduct);
+router.get('/product/:id', getProductById);
+router.post('/product', validatePostRequest(productSchema), postProduct);
+router.put('/product/:id', validatePostRequest(productSchema), modifyProduct);
+router.delete('/product/:id', deleteProduct);
 
 export default router;
