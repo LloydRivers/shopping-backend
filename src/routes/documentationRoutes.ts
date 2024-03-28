@@ -1,5 +1,5 @@
 import Router from 'koa-router';
-import swaggerDocs from '../routes/swagger';
+import swaggerDocs from '../config/swagger';
 
 const router = new Router();
 
