@@ -1,0 +1,97 @@
+{
+  "openapi": "3.0.0",
+  "info": {
+    "title": "A CRUD API.",
+    "description": "API Documentation",
+    "version": "1.0.0"
+  },
+  "servers": [
+    {
+      "url": ["/"]
+    }
+  ],
+  "paths": {
+    "/products": {
+      "get": {
+        "deprecated": false,
+        "description": "Will return an array of products.",
+        "responses": {
+          "200": {
+            "description": "Successful response.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "type": "object",
+                    "properties": {
+                      "id": {
+                        "type": "integer",
+                        "description": "The product id"
+                      },
+                      "title": {
+                        "type": "string",
+                        "description": "The title of the product"
+                      },
+                      "price": {
+                        "type": "number",
+                        "description": "The price of the product"
+                      },
+                      "description": {
+                        "type": "string",
+                        "description": "The description of the product"
+                      },
+                      "category": {
+                        "type": "string",
+                        "description": "The category of the product"
+                      },
+                      "image": {
+                        "type": "string",
+                        "description": "The image URL of the product"
+                      },
+                      "rating": {
+                        "type": "object",
+                        "properties": {
+                          "rate": {
+                            "type": "number",
+                            "description": "The rating of the product"
+                          },
+                          "count": {
+                            "type": "integer",
+                            "description": "The count of ratings for the product"
+                          }
+                        },
+                        "required": ["rate", "count"]
+                      }
+                    },
+                    "required": ["id", "title", "price", "description", "category", "image", "rating"]
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "responses": {
+      "200": {
+        "description": "Successful response."
+      }
+    },
+    "schemas": {
+      "Products": {
+        "allOf": [
+          {
+            "$ref": "./product.json"
+          },
+          {
+            "title": "Schema of the Container type Article List",
+            "description": "A schema describing the Container type Article List fields."
+          }
+        ]
+      }
+    }
+  }
+}
