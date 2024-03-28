@@ -1,7 +1,7 @@
 import { Context } from 'koa';
-import { ProductsController } from '../modules/products/adaptors/controllers/Product/ProductsController';
-import { container } from '../config/inversify.config';
-import { TYPES } from '../config/types';
+import { ProductsController } from '../../modules/products/adaptors/controllers/Product/ProductsController';
+import { container } from '../../config/inversify.config';
+import { TYPES } from '../../config/types';
 import { IProductDTO } from '@modules/products/DTO/ProductDTO';
 
 function productContainer() {
