@@ -7,9 +7,9 @@
   "license": "MIT",
   "devDependencies": {
     "@types/koa": "^2.15.0",
+    "@types/koa__cors": "^5.0.0",
     "@types/koa-bodyparser": "^4.3.12",
     "@types/koa-router": "^7.4.8",
-    "@types/koa__cors": "^5.0.0",
     "@types/node": "^20.11.28",
     "@typescript-eslint/eslint-plugin": "^7.2.0",
     "@typescript-eslint/parser": "^7.2.0",
@@ -24,6 +24,7 @@
     "vitest": "^1.4.0"
   },
   "scripts": {
+    "compose": "docker-compose up -d",
     "dev": "nodemon src/index.ts",
     "build": "tsc",
     "start": "node ./dist/src/index.js",

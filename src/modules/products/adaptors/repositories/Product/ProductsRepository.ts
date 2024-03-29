@@ -71,3 +71,12 @@ export class ProductsRepository implements IProductsRepository {
     }
   }
 }
+
+const seedPostgres = async () => {
+  const productsRepository = new ProductsRepository();
+  const products = await productsRepository.getAllProducts();
+
+  products.forEach(async (product) => {
+    await productsRepository.postProduct(product);
+  });
+};
