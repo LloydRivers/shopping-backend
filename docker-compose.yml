@@ -1,15 +1,15 @@
 version: '3.9'
 
 services:
-  postgres:
+  postgresql:
     image: postgres
     init: true
-    container_name: postgres
+    container_name: postgresql
     restart: always
     environment:
       POSTGRES_PASSWORD: password
       POSTGRES_USER: postgres
-      POSTGRES_DB: shopping-api-service
+      POSTGRES_DB: shopping-api-services
       PGUSER: postgres
     ports:
       - 5432:5432
@@ -18,15 +18,17 @@ services:
     networks:
       - shopping-api-service-network
 
-  api:
-    container_name: shopping-api-service
+  shopping-api-services:
+    container_name: shopping-api-services
     ports:
       - '8080:8080'
+    env_file:
+      - .env
     build:
       context: .
       dockerfile: Dockerfile
     depends_on:
-      - postgres
+      - postgresql
     volumes:
       - ./app:/app
     command: ['npm', 'run', 'dev']
