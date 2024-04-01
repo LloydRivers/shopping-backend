@@ -3,17 +3,10 @@ import { IProductsRepository } from './IProductsRepository';
 import { injectable } from 'inversify';
 import axios from 'axios';
 import { PrismaClient } from '@prisma/client';
+import { getErrorMessage } from '../../../../../helpers/handleCatchErrors';
 
 const baseUrl = 'https://fakestoreapi.com/products';
-// I think the base url should be in the .env file
 
-function getErrorMessage(error: unknown): string {
-  let message;
-  if (error instanceof Error) {
-    message = error.message;
-  } else message = String(error);
-  return message;
-}
 let prisma: PrismaClient;
 export const getPrismaClient = () => {
   if (!prisma) {
@@ -29,7 +22,7 @@ export class ProductsRepository implements IProductsRepository {
   constructor() {
     this.prisma = getPrismaClient();
   }
-  public async getAllProducts(): Promise<IProductDTO[]> {
+  public async getAllProducts() {
     try {
       const response = await axios.get(baseUrl);
       return response.data;
