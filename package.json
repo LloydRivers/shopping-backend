@@ -26,6 +26,7 @@
   },
   "scripts": {
     "compose": "docker-compose up -d",
+    "database:migration:generate": "npx prisma migrate dev --schema=./.prisma/schema.prisma --name",
     "dev": "nodemon src/index.ts",
     "build": "tsc",
     "start": "node ./dist/src/index.js",

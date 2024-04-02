@@ -15,6 +15,23 @@ export const getPrismaClient = () => {
   return prisma;
 };
 
+const seedProducts = async (product: IProductDTO) => {
+  try {
+    await prisma.product.create({
+      data: {
+        title: product.title,
+        price: product.price,
+        description: product.description,
+        category: product.category,
+        image: product.image,
+      },
+    });
+  } catch (error: unknown) {
+    const message = getErrorMessage(error);
+    throw new Error(`${message}`);
+  }
+};
+
 @injectable()
 export class ProductsRepository implements IProductsRepository {
   private readonly prisma: PrismaClient;
@@ -23,8 +40,11 @@ export class ProductsRepository implements IProductsRepository {
     this.prisma = getPrismaClient();
   }
   public async getAllProducts() {
+    console.log('getAllProducts');
     try {
       const response = await axios.get(baseUrl);
+      const mapAndSeed = await Promise.all(response.data.map(seedProducts));
+      console.log('mapAndSeed', mapAndSeed);
       return response.data;
     } catch (error: unknown) {
       const message = getErrorMessage(error);

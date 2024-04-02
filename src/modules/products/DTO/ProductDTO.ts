@@ -1,3 +1,5 @@
+import { Product } from '@prisma/client';
+
 export interface IProductDTO {
   id: number;
   title: string;
@@ -10,3 +12,4 @@ export interface IProductDTO {
     count: number;
   };
 }
+export type ProductDTO = Product;

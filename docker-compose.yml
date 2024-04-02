@@ -14,19 +14,27 @@ services:
       - 5432:5432
     volumes:
       - pgData:/var/lib/postgresql/data
+    networks:
+      - shopping-app
 
-  backend:
-    container_name: backend
-    restart: always
-    build:
-      context: .
-      dockerfile: Dockerfile
-    ports:
-      - '8080:8080'
-    env_file:
-      - .env
-    depends_on:
-      - db
+  # backend:
+  # container_name: backend
+  # restart: always
+  # build:
+  #   context: .
+  #   dockerfile: Dockerfile
+  # ports:
+  #   - '8080:8080'
+  # env_file:
+  #   - .env
+  # depends_on:
+  #   - db
+  # networks:
+  #   - shopping-app
 
 volumes:
   pgData: {}
+
+networks:
+  shopping-app:
+    name: shopping-app
