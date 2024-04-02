@@ -111,8 +111,7 @@ data/**
 report
 reports
 
-# Prisma
-schema.prisma
+
 
 # Misc
 .idea/
